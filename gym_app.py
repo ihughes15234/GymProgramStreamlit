@@ -2,8 +2,6 @@ import streamlit as st
 import pandas as pd
 import google.generativeai as genai
 import os  # Import the os module
-from typing import Generator
-
 
 st.set_page_config(page_icon="🏋🏽", layout="wide",
                    page_title="Training Plan Assistant")
@@ -78,9 +76,7 @@ def main():
         if sheet_url:
             df = load_data(sheet_url)
             # 4. Question Input
-            question = st.text_area("Provide Workout Programming Details:",
-                                    placeholder="Enter your workout plan generation guidelines...",
-                                    height = 150)
+            question = st.chat_input(placeholder="Enter your workout plan generation guidelines...")
 
             # 5. Generate and Display Response (if question is provided)
             if question:
